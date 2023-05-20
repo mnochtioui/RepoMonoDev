@@ -1,0 +1,92 @@
+ALGORITHM TAsk3_tari5
+VAR
+    in, day , mm, yy , year as integer
+    month as string
+    mois_valide, jour_valide as boolean
+BEGIN
+    READ(in);
+
+    yy:=in%100;
+    year:=2000+yy;
+
+    mm:=in-yy;
+    mm:=mm/100;  /*Division entiere*/
+    mm:=mm%100;
+
+    mois_valide=FALSE;
+    IF mm>=1 AND mm<=12 then
+        mois_valide=TRUE;
+    END IF
+
+    SWITCH mm DO
+        CASE 1 : month:="JANVIER";
+            BREAK;
+        CASE 2 : month:="FEVRIER";
+            BREAK;
+        CASE 3 : month:="MARS";
+            BREAK;
+        CASE 4 : month:="AVRIL";
+            BREAK;
+        CASE 5 : month:="MAI";
+            BREAK;
+        CASE 6 : month:="JUIN";            
+            BREAK;
+        CASE 7 : month:="JUILLET";
+            BREAK;
+        CASE 8 : month:="AOUT";
+            BREAK;
+        CASE 9 : month:="SEPTEMBRE";
+            BREAK;
+        CASE 10 : month:="OCTOBRE";
+            BREAK;
+        CASE 11 : month:="NOVEMBRE";
+            BREAK;
+        CASE 12: month:="DECEMBRE";
+            BREAK;
+        DEFAULT : mois_valide:=false;
+    END_SWITCH;
+
+    dd:=(in-(mm*100)-yy)/10000;
+
+    
+        
+        SWITCH mm DO
+            CASE 1 :
+            CASE 3 :
+            CASE 5 :
+            CASE 7 :
+            CASE 8 :
+            CASE 10 :
+            CASE 12 :
+                IF dd>=1 AND dd<=31 then
+                    jour_valide:=TRUE;
+                END IF;
+                BREAK:
+            CASE 4 :
+            CASE 6 :
+            CASE 9 :
+            CASE 11 : 
+                IF dd>=1 AND dd<=30
+                 then
+                    jour_valide:=TRUE;
+                END IF;
+                BREAK:
+            CASE 2 : 
+                IF year%4=0 AND dd>=1 AND dd<=29 THEN
+                    jour_valide:=TRUE;
+                ELSE year%4=0 AND dd>=1 AND dd<=28 THEN
+                    jour_valide:=TRUE;
+                ELSE
+                    jour_valide:=FALSE;
+                END IF
+        END_SWITCH;
+    END IF
+
+    IF mois_valide AND jour_valide THEN
+        WRITE("Day : "+dd);
+        WRITE("Month : " + month);
+        WRITE("Year : " + year);
+    END IF
+
+
+END.

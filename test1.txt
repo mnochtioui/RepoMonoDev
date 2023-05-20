@@ -1,0 +1,27 @@
+ALGHORYTHM Rent_a_car
+VAR
+    km, days : integer
+    m1, m2 : float
+CONST
+    r1:float:=0.7, r2:float:=0.4, r3:float:=0.2, p_d:float:=100, ins:float:=0.3, VAT:float:=0.18;
+
+BEGIN
+    READ(km)
+    READ(days)
+    if km<=100 then
+        m1:=r1*km
+    else if km<=1000 then
+        m1=(r1*100)+(r2*(km-1))
+        else m1=(r1*100)+(r2*900)+(r3*(km-1000))
+
+    m1:=m1+(days*ins)
+    m1:=(m1*VAT)
+      
+    m2:=((p_d+ins)*days)
+    m2:=(m2*VAT)
+
+    if m1>m2 then
+        write ("the first method is better")
+    else write ("the second method is better")
+
+END

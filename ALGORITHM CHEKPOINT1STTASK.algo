@@ -1,0 +1,46 @@
+ALGORITHM CHEKPOINT1STTASK
+VAR
+    s :STRING;  //sentence
+    nw, nv, nc, l, i : integer;
+    /*
+    *   nw for number of words
+    *   nv for number of vowels
+    *   nc for number of caracters
+    */
+    c: char;
+BEGIN
+    READ(s);
+
+    l:=s.length;nw:=0;nv:=0;nc:=0;
+    i:=1;
+    WHILE i<=l DO
+        c:=s[i];
+        nc++;
+        IF c=="." THEN
+            BREAK;
+        END IF
+        
+        SWITCH c DO
+            CASE 'a' : 
+            CASE 'e' : 
+            CASE 'i' : 
+            CASE 'o' : 
+            CASE 'u' : 
+            CASE 'y' : 
+                nv++;
+                BREAK;             
+        END SWITCH
+        IF c==" " THEN
+            nw++;
+        END IF
+        i++;
+    END_FOR
+    IF c=="." THEN
+        nw++;
+    END IF
+    WRITE(nc);
+    WRITE(nv);
+    WRITE(nw);
+
+
+END.
